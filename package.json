@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.6.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "sequelize": "^6.27.0"
   },
   "scripts": {
     "start": "react-scripts start",

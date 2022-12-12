@@ -2,9 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 
+//Controllers
+const userController = require('./controllers/user');
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
+app.use('/users', userController)
+
+
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
