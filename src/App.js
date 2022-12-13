@@ -1,3 +1,9 @@
+import React, { Component } from "react";
+import "./App.css";
+import { Navbar } from "react-bootstrap";
+import NavBar from "./components/Navbar";
+import { Router, Routes, Route } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
 import React, { Component } from 'react';
 import logo from '../src/flame.png';
 // import './App.css';
@@ -10,8 +16,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      greeting: ''
+      name: "",
+      greeting: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,10 +30,27 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
     fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-      .then(response => response.json())
-      .then(state => this.setState(state));
+      .then((response) => response.json())
+      .then((state) => this.setState(state));
   }
 
+render() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div>
+          <Navbar />
+        </div>
+        <div>
+          {" "}
+          <Router>
+            <Routes></Routes>
+          </Router>
+        </div>
+      </header>
+    </div>
+  );
+}
   render() {
     return (
       <div className="App">
