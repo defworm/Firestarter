@@ -2,15 +2,19 @@ const express = require('express');
 const app = express();
 
 require('dotenv').config();
-// the next two lines are used with the index.js file when creating models
-// const sequelize = new Sequelize(process.env.PG_URI)
-// const {Sequelize } = require ('sequelize')
+
+// this is the connection to the database using pguri
+const db = require('./config/database')
 
 //Middleware
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const cors = require('cors')
 
+//Testing the connection to the db
+db.authenticate()
+.then(()=> (console.log`Database connected...`))
+.catch(err =>console.log('Error' + err))
 
 // app.use(bodyParser.json());
 // app.use(express.static('public'))
@@ -19,6 +23,7 @@ const cors = require('cors')
 //   ))
 
 const userRouter = require('./controllers/userController')
+const inventoryRouter = require('./controllers/inventoryController')
 
 //This route is so that you know when your route is working. Delete this route at then end of the project 
 app.get('/', (req, res) =>{

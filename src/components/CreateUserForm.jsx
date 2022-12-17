@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/components/CreateUser.js
 import { useRef, useState, useEffect } from "react";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -7,6 +8,9 @@ const REGISTER_URL = '/register';
 
 
 function CreateUser(){
+=======
+function CreateUserForm(){
+>>>>>>> 0379e5088f6beb04aa7beecbf8f7ddd029085f12:src/components/CreateUserForm.jsx
     return (
       <div>
       <header>
@@ -42,6 +46,8 @@ function CreateUser(){
     );
   };
   
-  export default CreateUser
+  export default CreateUserForm
 ;
+
+
   
