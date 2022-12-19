@@ -36,12 +36,7 @@ User.init(
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
     email: DataTypes.STRING,
-    hashedPassword: {
-      type: DataTypes.STRING,
-      //   set(password) {
-      //     Sam can you update this next line with the hashed password?
-      //     this.setDataValue('hashedPassword', hash(password));
-    },
+    passwordDigest: DataTypes.STRING
   },  {
     modelName: "User",
     tableName: "users",
