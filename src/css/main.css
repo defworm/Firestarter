@@ -77,14 +77,13 @@
 
 .footer {
   font-size: 1rem;
-  /* position: fixed;
+  position: fixed;
   bottom: 0.4rem;
-  right: 1rem; */
+  right: 1rem;
   text-align: right;
   padding: 1rem;
   margin: 4px;
   color: #6A040F;
-  background-color: rgb(174, 174, 174);
 }
 
 .navbar-main {
@@ -94,7 +93,7 @@
   margin: .25rem;
   size-adjust: 5rem;
   size: 3rem;
-  padding: 1.5rem;
+  padding: 1rem;
   align-items: center;
   flex: 1 30px;
 }
