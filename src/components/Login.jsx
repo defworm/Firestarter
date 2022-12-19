@@ -69,9 +69,7 @@ function Login(){
           </form>
         </div>
         <br></br>
-        <h2>
-          Don't have an account? <strong><a href="./createuser">Sign Up Here</a></strong>
-        </h2>
+        
       </header>
     </div>
     );

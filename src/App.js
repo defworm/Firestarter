@@ -15,10 +15,12 @@ import Login from "./components/Login"
 import CreateUserForm from "./components/CreateUserForm";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import bodyParser from "body-parser";
+
 
 // import CurrentUserProvider from './contexts/CurrentUser'
 // import * as serviceWorker from "./serviceWorker";
-// import CreateUser from "./components/CreateUser";
+
 
 class App extends Component {
   constructor(props) {
@@ -45,13 +47,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <body>
-        <header className="App-header">
           <Navigation />
+        <header className="App-header"></header>
           <br />
           <hr/>
           <BrowserRouter>
-            {/* <Switch>  */}
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               <Route exact path="/home" element={<HomePage />} />
@@ -61,21 +61,14 @@ class App extends Component {
               <Route exact path="/ordercomplete" element={<OrderConfirmationPage />} />
               <Route exact path="/checkout" element={<CheckoutPage />} />
               <Route exact path="/login" element={<Login />}/>
+              <Route exact path="/createuser" element={<CreateUserForm />} />
               {/* <Route exact path="/product/:productid" element={<ProductDetails />}/> */}
               <Route exact path="/profile/:userid" element={<ProfilePage />} />
               <Route path="/" element={<Error404 />} />
-              {/* </Switch> */}
             </Routes>
           </BrowserRouter>
           <br/>
-          
-        </header>
-        
-        
-        </body>
-        <footer>
         <Footer />
-        </footer>
       </div>
     );
   }
