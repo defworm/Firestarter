@@ -3,7 +3,7 @@ import Login from "../components/Login";
 
 function ProfilePage() {
   return (
-    <div>    
+    <div>
       <Login />
       <h2>or</h2>
       <CreateUserForm />

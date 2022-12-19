@@ -83,7 +83,7 @@ router.get('/findusers', async (req, res) => {
 //Update user info
 router.put('/:id', async (req, res) => {
 
-    const { id, firstName, lastName, email,hashedPassword, } = req.body;
+    const { id, firstname, lastname, email,hashedPassword, } = req.body;
     // let passwordHash = hashSync(password);
     db.user.findOne({ where: { email: email }, paranoid: false })
         .then(users => {
@@ -132,7 +132,7 @@ try{
 })
 
 //Delete user
-router.delete('/:userid', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     const id = Number(req.params.id)
     db.users.findOne({ where: { id: id } })
         .then(data => {

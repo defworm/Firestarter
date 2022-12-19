@@ -22,20 +22,22 @@ const CreateUserForm = () => {
           <Form.Label>First Name </Form.Label>
           <Form.Control
             type="text"
-            ref="firstname"
+            useref="firstname"
             value={firstname}
             onChange={(event) => setFirstname(event.target.value)}
             placeholder="First Name"
+            autoComplete="first-name"
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicLastName">
           <Form.Label>Last Name </Form.Label>
           <Form.Control
             type="text"
-            ref="lastname"
+            useref="lastname"
             value={lastname}
             onChange={(event) => setLastname(event.target.value)}
             placeholder="Last Name"
+            autoComplete="last-name"
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -43,19 +45,21 @@ const CreateUserForm = () => {
           <Form.Control
             type="text"
             value={username}
-            ref="username"
+            useref="username"
             onChange={(event) => setusername(event.target.value)}
             placeholder="Choose a username"
+            autoComplete="username"
             />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address </Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             value={email}
-            ref="email"
+            useref="email"
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter email"
+            autoComplete="email"
             />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -66,8 +70,9 @@ const CreateUserForm = () => {
           <Form.Label htmlFor="inputPassword5">Password</Form.Label>
           <Form.Control
             type="password"
-            ref="hashedPassword"
+            useref="hashedPassword"
             value={hashedPassword}
+            autoComplete="current-password"
             // id="inputPassword5"
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Choose a username"

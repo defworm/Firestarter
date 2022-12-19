@@ -36,7 +36,8 @@ function Login() {
           <Form.Label>Email address </Form.Label>
           <Form.Control
             type="email"
-            ref="email"
+            useref="email"
+            autoComplete="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter your email address"
@@ -46,10 +47,11 @@ function Login() {
           <Form.Label>Password </Form.Label>
           <Form.Control
             type="password"
-            ref="hashedPassword"
+            useref="hashedPassword"
             value={hashedPassword}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
+            autoComplete="current-password"
             />
         </Form.Group>
         <Button variant="primary" type="submit" value="create user">
