@@ -1,8 +1,20 @@
 import { useState } from "react";
+// import { client } from 'pg';
+
+// const client = new Client({
+//   host: 'localhost',
+//   port: 5432,
+//   user: 'postgres',
+//   password: 'crystal',
+//   database: 'firestarter'
+// });
+
+// client.connect();
+
 
 function Login(){
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [hashedPassword, setPassword] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
   // const loginResponse = await fetch("/login", {
@@ -22,7 +34,7 @@ function Login(){
   //   console.error("Error logging in:", loginData.error);
   // }
     console.log(email);
-    console.log(password);
+    console.log(hashedPassword);
   }
 
     return (
@@ -46,7 +58,7 @@ function Login(){
             <label>Password</label>
             <input
               type="current-password"
-              name="password"
+              name="hashedPassword"
               placeholder="Enter Your Password Here"
               onChange={(event) => {
                 setPassword(event.target.value);
