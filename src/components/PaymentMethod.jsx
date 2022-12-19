@@ -1,7 +1,7 @@
 function PaymentMethod(){
     return (
       <div>
-        <h2> PaymentMethod Component </h2>
+        <h2> Payment Method </h2>
       </div>
     );
   };

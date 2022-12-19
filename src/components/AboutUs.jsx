@@ -1,9 +1,9 @@
 function AboutUs(){
   return (
     <div>
-      <h2> AboutUs Component </h2>
+      <h2> About Us </h2>
       <i className="fa-sharp fa-solid fa-fireplace"></i>
-      <img width='500' height='500'src="label.png" alt="fire starter"/>
+      <img width='300' height='300'src="label.png" alt="fire starter"/>
     </div>
   );
 };

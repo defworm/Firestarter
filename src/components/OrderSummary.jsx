@@ -1,7 +1,7 @@
 function OrderSummary(){
     return (
       <div>
-        <h2> OrderSummary Component </h2>
+        <h2> Order Summary </h2>
       </div>
     );
   };

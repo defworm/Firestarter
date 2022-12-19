@@ -69,6 +69,10 @@ class App extends Component {
         </BrowserRouter>
         <br />
         <br />
+        {/* <audio controls autoplay>
+          <source src="src\Fire_Burning-JaBa-810606813.mp3" type="audio/mpeg" />
+          <source src=".src/Fire_Burning-JaBa-810606813.wav" type="audio/wav" />
+        </audio> */}
         <Footer />
       </div>
     );
