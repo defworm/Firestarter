@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Nav, NavLink, Navbar } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-// import NavDropdown from "react-bootstrap/NavDropdown";
-// import { LinkContainer } from "react-router-bootstrap";
 import "../css/scss/main.css";
 // import { toggleMenu } from './main'
 

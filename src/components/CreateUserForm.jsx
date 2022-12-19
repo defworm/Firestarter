@@ -18,7 +18,7 @@ const CreateUserForm = () => {
       <h1>Create An Account</h1>
       <br />
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicFirstName">
+        <Form.Group className="mb-3" controlId="firstname">
           <Form.Label>First Name </Form.Label>
           <Form.Control
             type="text"
@@ -29,7 +29,7 @@ const CreateUserForm = () => {
             autoComplete="first-name"
             />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicLastName">
+        <Form.Group className="mb-3" controlId="lastname">
           <Form.Label>Last Name </Form.Label>
           <Form.Control
             type="text"
@@ -40,7 +40,7 @@ const CreateUserForm = () => {
             autoComplete="last-name"
             />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Group className="mb-3" controlId="username">
           <Form.Label>Username </Form.Label>
           <Form.Control
             type="text"
@@ -51,7 +51,7 @@ const CreateUserForm = () => {
             autoComplete="username"
             />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email address </Form.Label>
           <Form.Control
             type="text"
@@ -66,7 +66,7 @@ const CreateUserForm = () => {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formPassword">
+        <Form.Group className="mb-3" controlId="password">
           <Form.Label htmlFor="inputPassword5">Password</Form.Label>
           <Form.Control
             type="password"

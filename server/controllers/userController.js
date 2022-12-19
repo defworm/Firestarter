@@ -34,7 +34,7 @@ router.get("/users", async (req, res) => {
 });
 
 //addUser
-router.post('/createuser', async (req, res) => {
+router.post('/profile', async (req, res) => {
     // const hashedPassword = bcrypt.hashSync(password);
     let { username, firstname, lastname, email, hashedPassword } = req.body;
     const user = User.create({
@@ -62,7 +62,7 @@ router.get('/findusers', async (req, res) => {
 //Update user info
 router.put('/:id', async (req, res) => {
 
-    const { id, firstName, lastName, email, hashedPassword, } = req.body;
+    const { firstName, lastName, email, hashedPassword, } = req.body;
     // let passwordHash = hashSync(password);
     const user = User.findOne({
         where: { email: email }, paranoid: false

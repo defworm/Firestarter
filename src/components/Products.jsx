@@ -1,9 +1,12 @@
 // import { createContext } from "context";
 import { useState } from "react";
+import React from 'react';
 import { Card } from "react-bootstrap";
+// import updateCart from "./updateCart";
 
 function Products() {
   const [quantitypurchased, setQuantityPurchased] = useState("");
+  // const inCart = useContext(updateCart)
   const addToCart = async (event) => {
     await event.preventDefault();
   };

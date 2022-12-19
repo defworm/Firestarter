@@ -10,7 +10,8 @@
 .shopping-cart{
   border: 1px solid #370617;
   border-radius: 20px;
-  display: flex;
+  display: inline-block;
+  /* position: absolute; */
 }
 .delete-btn{
   max-width: 5px;
