@@ -32,6 +32,7 @@ Cody Cork
 * SQL
 * Node
 * Bcrypt
+* AWS 
 * Sequelize
 * PostgresQL
 * Cors
