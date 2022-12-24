@@ -7,6 +7,9 @@
   /* align-content: space-evenly; */
   /* align-content: stretch; */
 }
+.about-us-img{
+  max-width: 40vw;
+}
 .shopping-cart{
   border: 1px solid #370617;
   border-radius: 20px;
