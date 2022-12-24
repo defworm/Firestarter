@@ -1,5 +1,6 @@
-import * as React from "react";
+// import * as React from "react";
 import { Component } from "react";
+import React, {useState, useEffect} from 'react';
 import "./css/scss/main.css";
 import "./css/scss/main.css.map";
 import Navigation from "./components/Navbar.jsx";
@@ -20,29 +21,88 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import CurrentUserProvider from './contexts/CurrentUser'
 // import * as serviceWorker from "./serviceWorker";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      greeting: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+function App() {
+  const [users, setUsers] = useState(false);
+  useEffect(() => {
+    getUser();
+  }, []);
+  function getUser() {
+    fetch('http://localhost:3001')
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setUsers(data);
+      });
   }
-
-  handleChange(event) {
-    this.setState({ name: event.target.value });
+  function createUser() {
+    let email = prompt('Enter email');
+    let hashedPassword = prompt('Enter password');
+    fetch('http://localhost:3001/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, hashedPassword}),
+    })
+      .then(response => {
+        return response.text(Welcome);
+      })
+      .then(data => {
+        alert(data);
+        getUser();
+      });
   }
+  function deleteUser() {
+    let id = prompt('Enter user id');
+    fetch(`http://localhost:3001/user/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        alert(data);
+        getUser();
+      });
+  
+  // return (
+  //   <div>
+  //     {users ? users : 'There is no user data available'}
+  //     <br />
+  //     <button onClick={createUser}>Add User</button>
+  //     <br />
+  //     <button onClick={deleteUser}>Delete User</button>
+  //   </div>
+  // );
+}
 
-  handleSubmit(event) {
-    event.preventDefault();
-    fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-      .then((response) => response.json())
-      .then((state) => this.setState(state));
-  }
+ 
 
-  render() {
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       name: "",
+//       greeting: "",
+//     };
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+
+//   handleChange(event) {
+//     this.setState({ name: event.target.value });
+//   }
+
+//   handleSubmit(event) {
+//     event.preventDefault();
+//     fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
+//       .then((response) => response.json())
+//       .then((state) => this.setState(state));
+//   }
+
+  // render() 
+  {
     return (
       <div className="App">
         <Navigation />
@@ -68,6 +128,13 @@ class App extends Component {
           </Routes>
         </BrowserRouter>
         <br />
+        <div>
+      {users ? users : 'There is no user data available'}
+      <br />
+      <button onClick={createUser}>Add User</button>
+      <br />
+      <button onClick={deleteUser}>Delete User</button>
+    </div>
         <br />
         {/* <audio controls autoplay>
           <source src="src\Fire_Burning-JaBa-810606813.mp3" type="audio/mpeg" />
@@ -76,7 +143,9 @@ class App extends Component {
         <Footer />
       </div>
     );
-  }
-}
+      }
+    }
+  
+
 
 export default App;

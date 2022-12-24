@@ -1,12 +1,15 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const port = 3001
 
 // const { Seqeulize, DataTypes }= require('sequelize');
 // this is the connection to the database using pguri
 const db = require("./config/database");
 
-const { users } = require("./db/models/user");
+const { user } = require("./db/models/user");
+
+const user_model = require('./db/models/user_model')
 
 //Middleware
 const bodyParser = require("body-parser");
@@ -33,12 +36,51 @@ dbsync();
 const userRouter = require("./controllers/userController");
 
 //This route is so that you know when your route is working. Delete this route at then end of the project
-app.get("/", (req, res) => {
-  res.send("Hello, Firestarters");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello, Firestarters");
+// });
+
+
+app.get('/', (req, res) => {
+  user_model.getUsers()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 // Controllers
 app.use("/user", userRouter);
+app.use(express.json())
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+  next();
+});
+
+
+app.post('/user', (req, res) => {
+  user_model.createUser(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.delete('/user/:id', (req, res) => {
+  user_model.deleteUser(req.params.id)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 // app.use('/profile', userController)
 // app.use('/login', require ('./controllers/userController'))
 // app.use('/createaccount', userController)
@@ -51,6 +93,7 @@ app.use("/user", userRouter);
 // }catch(err){
 //   console.log(`Unable to connect to PG: ${err}`)
 // }
+
 
 ///I am not sure what the below routes are for so I commented then out until we get the other routes working
 
