@@ -1,52 +1,53 @@
 "use strict";
-// const { Sequelize, DataTypes, Model } = require ('sequelize');
-// const sequelize = new Sequelize(process.env.PG_URI)
+// const order = require("./order");
+// const user = require("./user");
 
-const order = require("./order");
-const user = require("./user");
+const {
+  Model 
+} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
-  class payment_method extends Model {
+module.exports = (sequelize, Sequelize) => {
+  class Payment_method extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ order, user }) {
-      payment_method.hasMany(order, { as: 'orderid', foreignKey: 'id' });
-      payment_method.belongsTo(user, { as: 'userid', foreignKey: 'id' });
-    }
+    // static associate({ order, user }) {
+    //   payment_method.hasMany(order, { as: 'orderid', foreignKey: 'id' });
+    //   payment_method.belongsTo(user, { as: 'userid', foreignKey: 'id' });
+    // }
   }
-  payment_method.init({
-    id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: DataTypes.INTEGER
-    },
-    nameoncard: DataTypes.STRING,
+  Payment_method.init({
+    // id: {
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   type: Sequelize.INTEGER
+    // },
+    nameoncard: Sequelize.STRING,
     cardnumber: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       isCreditCard: true,
       allowNull: false
     },
-    expirationdate: DataTypes.DATE,
+    expirationdate: Sequelize.DATE,
     securitycode: {
-      type: DataTypes.INTEGER
+      type: Sequelize.INTEGER
       // validate: {
       //   is: [0 - 9],
       //   len: [3,4]
       },
       nameofcard: {
         defaultValue: 'My Card',
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
       orderid: {
         foreignKey: true,
-        type: DataTypes.INTEGER
+        type: Sequelize.INTEGER
       },
       userid: {
         foreignKey: true,
-        type: DataTypes.INTEGER
+        type: Sequelize.INTEGER
       },
   }, {
     sequelize,
@@ -54,5 +55,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'paynent_methods', 
     timestamps: false
   });
-  return payment_method;
+  return Payment_method;
 };

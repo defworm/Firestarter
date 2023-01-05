@@ -1,17 +1,15 @@
 'use strict';
-const { DataTypes, Model, Association, ForeignKey, Sequelize } = require('sequelize');
-const sequelize = require('sequelize')
-// This next line is used when using the Index.js to create the models. We are not using Index.js to create the models. 
-// const sequelize = new Sequelize(process.env.PG_URI);
-
-const inventory = require("./inventory");
-const user = require("./user");
-const shipping_address = require("./shipping_address");
-const payment_method = require("./payment_method");
-const billing = require("./billing");
-
-module.export = (sequelize, DataTypes) => {
-  class order extends Model {
+// **uncomment the next four lines once we get logged in
+// const inventory = require("./inventory");
+// const user = require("./user");
+// const shipping_address = require("./shipping_address");
+// const payment_method = require("./payment_method");
+// const billing = require("./billing");
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, Sequelize) => {
+  class Order extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -39,47 +37,39 @@ module.export = (sequelize, DataTypes) => {
     //     }
     // }
   }
-  order.init({
+  Order.init({
     // id: {
     //   autoIncrement: true,
     //   primaryKey: true,
-    //   type: DataTypes.INTEGER
+    //   type: Sequelize.INTEGER
     // },
     quantitypurchased: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     ordersubtotal: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     shippingcost: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     ordertax: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     ordertotal: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     shipped: {
-      type: DataTypes.BOOLEAN,
+      type: Sequelize.BOOLEAN,
       allowNull: true
     },
     expdeliverydate: {
-      type: DataTypes.DATE,
+      type: Sequelize.DATE,
       allowNull: true
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.NOW
-    }
-  }, {
+      }, {
     sequelize,
     modelName: 'order',
     tableName: 'orders'
   });
-  return order;
+  return Order;
 };

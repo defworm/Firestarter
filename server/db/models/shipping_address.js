@@ -1,14 +1,13 @@
 "use strict";
-const { Sequelize, DataTypes, Model } = require ('sequelize');
-const sequelize = require('sequelize')
+// const user = require("./user");
+// const order = require("./order");
 
-// const sequelize = new Sequelize(process.env.PG_URI)
+const {
+  Model 
+} = require('sequelize');
 
-const user = require("./user");
-const order = require("./order");
-
-module.export = (sequelize, DataTypes) => {
-  class shipping_address extends Model {
+module.exports = (sequelize, Sequelize) => {
+  class Shipping_address extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -19,50 +18,42 @@ module.export = (sequelize, DataTypes) => {
     //   shipping_address.hasMany(order, {as:'orderid', foreignKey:'id'});
     }
   
-  shipping_address.init({
-    id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: DataTypes.INTEGER
-    },
+  Shipping_address.init({
+    // id: {
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   type: Sequelize.INTEGER
+    // },
     fullname: {
       allowNull: true,
-      type: DataTypes.STRING
-    },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
+      type: Sequelize.STRING
     },
     country: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       validate: {
         isIn: [["USA", "U.S.A", "United States", "United States of America"]],
       },
     },
     streetaddress: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     addresslinetwo: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     city: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     shipstate: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     zipcode: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     phone: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     userid: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       foreignKey: true
     },
   }, {
@@ -71,5 +62,5 @@ module.export = (sequelize, DataTypes) => {
     tableName: 'shipping_addresses',
     timestamps: false
   });
-//   return shipping_address;
+  return Shipping_address;
 };

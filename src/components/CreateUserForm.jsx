@@ -1,3 +1,4 @@
+// import React from "react";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
@@ -6,20 +7,34 @@ const CreateUserForm = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [hashedPassword, setPassword] = useState("");
+  const [passwordDigest, setPassword] = useState("");
 
   const handleSubmit = (event) => {
+    // handleSubmit(async (data) => await fetchAPI(data))
     event.preventDefault();
     // Send the form data to the server using an HTTP request
   };
-
   return (
     <div className="createuserform">
       <h1>Create An Account</h1>
       <br />
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="firstname">
-          <Form.Label>First Name </Form.Label>
+      {/* <Form method="POST" action='user/createuser'> */}
+        <Form.Group className="mb-3" controlId="formBasicUsername">
+          <Form.Label   htmlFor="username" >Username </Form.Label>
+          <Form.Control
+            input="username"
+            type="text"
+            value={username}
+            useref="username"
+            name="username"
+            onChange={(event) => setusername(event.target.value)}
+            placeholder="Choose a username"
+            autoComplete="user-name"
+            />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicFirstName">
+          <Form.Label   htmlFor="firstname" >First Name </Form.Label>
           <Form.Control
             type="text"
             useref="firstname"
@@ -29,8 +44,8 @@ const CreateUserForm = () => {
             autoComplete="first-name"
             />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="lastname">
-          <Form.Label>Last Name </Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicLastName">
+          <Form.Label   htmlFor="lastname" >Last Name </Form.Label>
           <Form.Control
             type="text"
             useref="lastname"
@@ -40,19 +55,8 @@ const CreateUserForm = () => {
             autoComplete="last-name"
             />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="username">
-          <Form.Label>Username </Form.Label>
-          <Form.Control
-            type="text"
-            value={username}
-            useref="username"
-            onChange={(event) => setusername(event.target.value)}
-            placeholder="Choose a username"
-            autoComplete="username"
-            />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email address </Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label   htmlFor="email">Email address </Form.Label>
           <Form.Control
             type="text"
             value={email}
@@ -66,24 +70,27 @@ const CreateUserForm = () => {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label
+          htmlFor="passwordDigest"
+          >Password</Form.Label>
           <Form.Control
-            type="password"
-            useref="hashedPassword"
-            value={hashedPassword}
+            type="text"
+            useref="passwordDigest"
+            value={passwordDigest}
             autoComplete="current-password"
-            // id="inputPassword5"
             onChange={(event) => setPassword(event.target.value)}
-            placeholder="Choose a username"
+            placeholder="Choose a password"
             aria-describedby="passwordHelpBlock"
           />
-          <Form.Text id="passwordHelpBlock" muted>
+          <Form.Text 
+          id="passwordHelpBlock" 
+          muted>
             Your password must be 8-20 characters long, contain letters and
             numbers, and must not contain spaces, special characters, or emoji.
           </Form.Text>
         </Form.Group>
-        <Button variant="primary" type="submit" value="create user">
+        <Button variant="primary" type="submit" value="Submit">
           Create User
         </Button>
       </Form>

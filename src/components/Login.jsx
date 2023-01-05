@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 
 function Login() {
   const [email, setEmail] = useState("");
-  const [hashedPassword, setPassword] = useState("");
+  const [passwordDigest, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ function Login() {
     //   console.error("Error logging in:", loginData.error);
     // }
     console.log(email);
-    console.log(hashedPassword);
+    console.log(passwordDigest);
   };
 
   return (
@@ -51,6 +51,7 @@ function Login() {
             value={hashedPassword}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
+            autoComplete="current-password"
             autoComplete="current-password"
             />
         </Form.Group>
