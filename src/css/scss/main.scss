@@ -1,0 +1,95 @@
+@import './config';
+@import './home';
+@import './menu';
+@import './Navbar';
+@import './login';
+@import './footer';
+@import './responsive';
+
+
+
+#root {
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    // background: $primary-color;
+    color: set-text-color($primary-color);
+    height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1;
+    align-self: center;
+    align-content: center;
+}
+
+button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    line-height: normal;
+    font-weight: 400;
+    font-style: normal;
+    transition: all 0.25s;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    touch-action: manipulation;
+    outline: none;
+    user-select: none;
+    user-select: none;
+    padding: 3px;
+    
+    &:disabled {
+        cursor: not-allowed
+    }
+
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+a {
+    color:set-text-color($primary-color);
+    text-decoration: none;
+}
+
+.text-secondary {
+    color: $secondary-color;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    padding: .5rem;
+}
+
+.shoppingcarticon{
+    position: absolute;
+    right: 0;
+}
+
+main {
+    height: 90%;
+    // width: 100%;
+
+    .social-icons {
+        position: fixed;
+        bottom: 1rem;
+        left:1rem;
+        
+
+        a {
+            padding: 0.4rem;
+            @include transition-ease;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}
+
